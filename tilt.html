@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tilt.css">
+    <title>CSS Animation</title>
+</head>
+<body>
+    <main>
+        <div class="slider-item">1</div>
+        <div class="slider-item">2</div>
+        <div class="slider-item">3</div>
+        <div class="slider-item">4</div>
+        <div class="slider-item">5</div>
+        <div class="slider-item">6</div>
+        <div class="slider-item">7</div>
+        <div class="slider-item">8</div>
+        <div class="slider-item">9</div>
+    </main>
+
+    <script>
+        window.onscroll = () => {
+            let scrollPosition = getComputedStyle(document.body, null).getPropertyValue("--scroll-position");
+            let scrollPositionDelayed = getComputedStyle(document.body, null).getPropertyValue("--scroll-position-delayed");
+            
+            let scrollVelocity = getComputedStyle(document.body, null).getPropertyValue("--scroll-velocity");
+            let scrollSpeed = getComputedStyle(document.body, null).getPropertyValue("--scroll-speed");
+            let scrollDirection = getComputedStyle(document.body, null).getPropertyValue("--scroll-direction");
+            
+            console.log("Scroll Position:           " + scrollPosition);
+            console.log("Scroll Position Delayed:   " + scrollPositionDelayed);
+
+            //console.log("Scroll Velocity: " + scrollVelocity);
+            //console.log("Scroll Speed: " + scrollSpeed);
+            //console.log("Scroll Direction: " + scrollDirection);
+        }
+    </script>
+</body>
+</html>

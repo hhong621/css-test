@@ -1,0 +1,65 @@
+main {
+    width: min(600px, 80vw);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.slider-item {
+    width: 100%;
+    height: min(350px, 70vh);
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    font: 72px Arial, sans-serif;
+    color: white;
+}
+
+@property --scroll-position {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --scroll-position-delayed {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@keyframes adjust-pos {
+    to {
+        --scroll-position: 1;
+        --scroll-position-delayed: 1;
+    }
+}
+
+:root {
+    animation: adjust-pos linear both;
+    animation-timeline: scroll(root);
+}
+
+body {
+    transition: --scroll-position-delayed 0.15s linear;
+    --scroll-velocity: calc(var(--scroll-position) - var(--scroll-position-delayed));
+    --scroll-speed: abs(var(--scroll-velocity));
+    --scroll-direction: sign(var(--scroll-velocity));
+}
+
+body {
+    font-size: 2rem;
+}
+
+.slider-item {
+    transform: skew(calc(var(--scroll-velocity) * -25deg));
+    background: hsl(calc(0deg + (145deg * var(--scroll-direction))) 70% 50%);
+}
+
+@supports not (transform: scaleX(sign(-1))) {
+    body {
+      --scroll-speed: max(var(--scroll-velocity), -1 * var(--scroll-velocity));
+      --scroll-direction: calc(var(--scroll-velocity) / var(--scroll-speed));
+    }
+  }
