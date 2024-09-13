@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Q3.css">
+</head>
+<script>
+    function coordinate(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        document.documentElement.style.setProperty("--x", x.toFixed(2));
+        document.documentElement.style.setProperty("--y", y.toFixed(2));
+    }
+</script>
+<body onmousemove="coordinate(event)">
+    <div class="container"></div>
+
+    <div class="card">
+        <div class="header">
+            <img class="icon skeleton"></img>
+            <div class="title" data-title>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+            </div>
+        </div>
+        <div data-body>
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text"></div>
+            <div class="skeleton skeleton-text"></div>
+        </div>
+    </div>
+</body>
+</html>
